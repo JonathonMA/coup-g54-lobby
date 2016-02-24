@@ -24,8 +24,10 @@
   "dependencies": {
     "material-ui": "^0.14.4",
     "object.entries": "^1.0.3",
+    "object.values": "^1.0.3",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-tap-event-plugin": "^0.2.1"
+    "react-tap-event-plugin": "^0.2.1",
+    "shuffle-array": "^0.1.2"
   }
 }
