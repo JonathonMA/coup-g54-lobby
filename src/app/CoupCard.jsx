@@ -1,16 +1,13 @@
 import React from 'react'
 import getRole from './get-role'
-import Card from 'material-ui/lib/card/card'
-import CardHeader from 'material-ui/lib/card/card-header'
-import CardText from 'material-ui/lib/card/card-text'
-
-import colors from "material-ui/lib/styles/colors"
+import { makeStyles } from '@material-ui/core/styles';
+import { Avatar, Card, CardHeader, CardContent, colors } from '@material-ui/core';
 
 let categoryColors = {
-  Communications: colors.blue500,
-  Finance: colors.green500,
-  Force: colors.purple500,
-  "Special Interests": colors.pink500
+  Communications: colors.blue[500],
+  Finance: colors.green[500],
+  Force: colors.purple[500],
+  "Special Interests": colors.pink[500],
 }
 function colorOf (role) {
   return categoryColors[role.category]
@@ -20,15 +17,27 @@ function CoupCard (props) {
   let role = getRole(props.role),
       cardColor = colorOf(role)
 
+  const useStyles = makeStyles(theme => ({
+    avatar: {
+      backgroundColor: cardColor,
+    },
+  }))
+
+  const classes = useStyles()
+
   return <Card>
     <CardHeader
+      avatar={
+        <Avatar className={classes.avatar}>
+          {role.category.slice(0, 2)}
+        </Avatar>
+      }
       title={role.name}
-      subtitle={role.category}
-      subtitleColor={cardColor}
+      subheader={role.category}
     />
-    <CardText>
+    <CardContent>
       {role.text}
-    </CardText>
+    </CardContent>
   </Card>
 }
 
