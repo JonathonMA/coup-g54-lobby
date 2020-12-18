@@ -7,16 +7,16 @@ const useStyles = makeStyles(theme => ({
   card: {
     "margin-top": '5px',
   },
-  Communications: {
+  communications: {
     backgroundColor: colors.blue[500],
   },
-  Finance: {
+  finance: {
     backgroundColor: colors.green[500],
   },
-  Force: {
+  force: {
     backgroundColor: colors.purple[500],
   },
-  "Special-Interests": {
+  "special-interests": {
     backgroundColor: colors.pink[500],
   },
 }))
@@ -25,18 +25,18 @@ function CoupCard (props) {
   const role = getRole(props.role)
   const classes = useStyles()
   const cardClassName = classes.card
-  const avatarClassName = classes[role.categoryClass]
+  const avatarClassName = classes[role.category.id]
 
   return (
     <Card className={cardClassName}>
       <CardHeader
         avatar={
           <Avatar className={avatarClassName}>
-            {role.categoryAbbreviated}
+            {role.category.abbreviation}
           </Avatar>
         }
         title={role.name}
-        subheader={role.category}
+        subheader={role.category.name}
       />
       <CardContent>
         {role.text}

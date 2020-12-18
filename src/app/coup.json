@@ -3,21 +3,25 @@
     {
       "id": "communications",
       "name": "Communications",
+      "abbreviation": "C",
       "count": 1
     },
     {
       "id": "finance",
       "name": "Finance",
+      "abbreviation": "Fi",
       "count": 1
     },
     {
       "id": "force",
       "name": "Force",
+      "abbreviation": "Fo",
       "count": 1
     },
     {
       "id": "special-interests",
       "name": "Special Interests",
+      "abbreviation": "S",
       "count": 2
     }
   ],

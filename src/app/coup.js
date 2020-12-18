@@ -1,21 +1,14 @@
 import data from './coup.json'
 
-function enhanceRole(role) {
-  const category = getCategory(role.categoryId)
+const enhanceRole = role => ({
+  ...role,
+  category: getCategory(role.categoryId),
+})
 
-  return {
-    ...role,
-    category: category.name,
-    categoryAbbreviated: category.name.slice(0, 2),
-    categoryClass: category.name.replace(/ /g, "-"),
-  }
-}
 
-function enhanceCategory(category) {
-  return {
-    ...category,
-  }
-}
+const enhanceCategory = category => ({
+  ...category,
+})
 
 function findOrThrow (type, array, predicate, message) {
   const item = array.find(predicate)
