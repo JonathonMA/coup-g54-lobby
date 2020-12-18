@@ -1,5 +1,5 @@
 import React from 'react'
-import getRole from './get-role'
+import { getRole } from './coup'
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Card, CardHeader, CardContent, colors } from '@material-ui/core';
 

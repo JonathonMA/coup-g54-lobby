@@ -1,5 +1,5 @@
 import entries from 'object.entries' // fuck off javascript you useless piece of shit
-import rolesInCategory from './roles-in-category'
+import { rolesInCategory } from './coup'
 import shuffleArray from 'shuffle-array'
 import MersenneTwister from 'mersenne-twister'
 
