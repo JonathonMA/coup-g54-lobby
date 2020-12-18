@@ -3,42 +3,46 @@ import getRole from './get-role'
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Card, CardHeader, CardContent, colors } from '@material-ui/core';
 
-let categoryColors = {
-  Communications: colors.blue[500],
-  Finance: colors.green[500],
-  Force: colors.purple[500],
-  "Special Interests": colors.pink[500],
-}
-function colorOf (role) {
-  return categoryColors[role.category]
-}
+const useStyles = makeStyles(theme => ({
+  card: {
+    "margin-top": '5px',
+  },
+  Communications: {
+    backgroundColor: colors.blue[500],
+  },
+  Finance: {
+    backgroundColor: colors.green[500],
+  },
+  Force: {
+    backgroundColor: colors.purple[500],
+  },
+  "Special-Interests": {
+    backgroundColor: colors.pink[500],
+  },
+}))
 
 function CoupCard (props) {
-  let role = getRole(props.role),
-      cardColor = colorOf(role)
-
-  const useStyles = makeStyles(theme => ({
-    avatar: {
-      backgroundColor: cardColor,
-    },
-  }))
-
+  const role = getRole(props.role)
   const classes = useStyles()
+  const cardClassName = classes.card
+  const avatarClassName = classes[role.categoryClass]
 
-  return <Card>
-    <CardHeader
-      avatar={
-        <Avatar className={classes.avatar}>
-          {role.category.slice(0, 2)}
-        </Avatar>
-      }
-      title={role.name}
-      subheader={role.category}
-    />
-    <CardContent>
-      {role.text}
-    </CardContent>
-  </Card>
+  return (
+    <Card className={cardClassName}>
+      <CardHeader
+        avatar={
+          <Avatar className={avatarClassName}>
+            {role.categoryAbbreviated}
+          </Avatar>
+        }
+        title={role.name}
+        subheader={role.category}
+      />
+      <CardContent>
+        {role.text}
+      </CardContent>
+    </Card>
+  )
 }
 
 export default CoupCard
