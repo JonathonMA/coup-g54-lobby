@@ -1,6 +1,7 @@
 import React from 'react'
 import CoupCard from './CoupCard'
-import RaisedButton from 'material-ui/lib/raised-button'
+import { Button } from '@material-ui/core'
+import ShuffleIcon from '@material-ui/icons/Shuffle';
 
 import generateCoupRoles from './generate-coup-roles'
 
@@ -36,10 +37,20 @@ class CoupG54Game extends React.Component {
   }
 
   render() {
-    return <div>
-    <RaisedButton label="New Game" onClick={this.newGame.bind(this)}/>
-    {this.state.cards.map((role, key) => <CoupCard key={key} role={role}/>)}
-    </div>
+    return (
+      <div>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          onClick={this.newGame.bind(this)}
+          startIcon={<ShuffleIcon />}
+        >
+          New Game
+        </Button>
+        {this.state.cards.map((role, key) => <CoupCard key={key} role={role}/>)}
+      </div>
+    )
   }
 }
 
