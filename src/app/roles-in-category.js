@@ -13,7 +13,7 @@ for (let {category, name} of values(roleDB)) {
 function rolesInCategory (category) {
   let roles = roleNamesByCategory[category]
   if (!roles) {
-    throw "Invalid Category"
+    throw new Error("Invalid Category")
   }
 
   return roles
