@@ -1,19 +1,16 @@
-import entries from 'object.entries' // fuck off javascript you useless piece of shit
-import { rolesInCategory } from './coup'
+import { rolesInCategoryById, allCategories } from './coup'
 import shuffleArray from 'shuffle-array'
 import MersenneTwister from 'mersenne-twister'
 
-let regularGame = {
-  Communications: 1,
-  Finance: 1,
-  Force: 1,
-  "Special Interests": 2
-}
+function pickCards(rng, categories) {
+  let pickedCards = []
 
-function pickCards(rng, arr, [category, count]) {
-  let roles = rolesInCategory(category)
+  categories.forEach(category => {
+    const roles = rolesInCategoryById(category.id)
+    pickedCards = pickedCards.concat(shuffleArray.pick(roles, {picks: category.count, rng: rng}))
+  })
 
-  return arr.concat(shuffleArray.pick(roles, {picks: count, rng: rng}))
+  return pickedCards.map(role => role.name)
 }
 
 function generateCoupRoles (seed) {
@@ -24,7 +21,7 @@ function generateCoupRoles (seed) {
   let twister = new MersenneTwister(seed),
       rng = twister.random.bind(twister)
 
-  return entries(regularGame).reduce(pickCards.bind(null, rng), [])
+  return pickCards(rng, allCategories())
 }
 
 export default generateCoupRoles

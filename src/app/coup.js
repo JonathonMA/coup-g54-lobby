@@ -27,7 +27,11 @@ const getRole = name => enhanceRole(findOrThrow('Role', data.roles, role => role
 const rolesInCategoryById = categoryId => data.roles.filter(role => role.categoryId === categoryId).map(enhanceRole)
 const rolesInCategory = categoryName => rolesInCategoryById(getCategoryByName(categoryName).id).map(role => role.name)
 
+const allCategories = () => data.categories
+
 export {
   getRole,
   rolesInCategory,
+  rolesInCategoryById,
+  allCategories,
 }
