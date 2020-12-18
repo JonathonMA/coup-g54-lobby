@@ -1,4 +1,4 @@
-import coupRoles from "./roles"
+import coupRoles from "./roles.json"
 import entries from 'object.entries' // fuck off javascript you useless piece of shit
 
 let roleDB = {}
