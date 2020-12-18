@@ -14,8 +14,6 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4",
     "mersenne-twister": "^1.0.1",
-    "object.entries": "^1.0.3",
-    "object.values": "^1.0.3",
     "sha1": "^1.1.1",
     "shuffle-array": "^0.1.2"
   },
