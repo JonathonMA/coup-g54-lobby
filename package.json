@@ -2,6 +2,7 @@
   "name": "coup-g54-lobby",
   "version": "0.1.0",
   "description": "Pregame ritual for Coup G54",
+  "homepage": "https://jonathonma.github.io/coup-g54-lobby/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
