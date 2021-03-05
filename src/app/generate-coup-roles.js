@@ -1,6 +1,6 @@
 import { rolesInCategoryById, allCategories } from './coup'
 import shuffleArray from 'shuffle-array'
-import MersenneTwister from 'mersenne-twister'
+import Chance from 'chance'
 
 function pickCards(rng, categories) {
   let pickedCards = []
@@ -13,15 +13,13 @@ function pickCards(rng, categories) {
   return pickedCards.map(role => role.name)
 }
 
-function generateCoupRoles (seed) {
+export default function generateCoupRoles (seed) {
   if (!seed) {
-    seed = Math.random()
+    throw new Error("missing seed")
   }
 
-  let twister = new MersenneTwister(seed),
-      rng = twister.random.bind(twister)
+  let chance = new Chance(seed),
+      rng = chance.random.bind(chance)
 
   return pickCards(rng, allCategories())
 }
-
-export default generateCoupRoles
