@@ -18,7 +18,8 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Paper,
+  Card,
+  CardContent,
   Fab,
 } from "@material-ui/core"
 import InfoIcon from "@material-ui/icons/Info"
@@ -70,18 +71,21 @@ function GameTitle() {
 
 function About() {
   return (
-    <Paper variant="outlined">
-      <Typography variant="h5" component="h1">
-        Coup: Rebellion G54 Lobby
-      </Typography>
-      <Typography variant="body1">
-        This helps automate the pregame ritual of playing Coup: Rebellion G54.
-      </Typography>
-      <Typography variant="h6" component="h2">
-        Author
-      </Typography>
-      <Typography variant="body1">Jonathon M. Abbott</Typography>
-    </Paper>
+    <Card>
+      <CardContent>
+        <Typography variant="h5" component="h1">
+          Coup: Rebellion G54 Lobby
+        </Typography>
+        <Typography variant="body1">
+          This helps automate the pregame ritual of playing Coup: Rebellion G54.
+          Generate a game, and share the link with your friends.
+        </Typography>
+        <Typography variant="h6" component="h2">
+          Author
+        </Typography>
+        <Typography variant="body1">Jonathon M. Abbott</Typography>
+      </CardContent>
+    </Card>
   )
 }
 
