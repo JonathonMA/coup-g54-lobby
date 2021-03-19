@@ -8,43 +8,50 @@ import {
   CardContent,
   colors,
 } from "@material-ui/core"
+import mapObject from "underscore/modules/mapObject"
 
-const useStyles = makeStyles((theme) => ({
-  card: {
+const roleColors = {
+  communications: colors.blue[500],
+  finance: colors.green[500],
+  force: colors.purple[500],
+  "special-interests": colors.pink[500],
+}
+
+const allRoles = (func) => mapObject(roleColors, func)
+
+const useStyles = makeStyles((theme) =>
+  allRoles((color) => ({
     "margin-top": "5px",
-  },
-  communications: {
-    backgroundColor: colors.blue[500],
-  },
-  finance: {
-    backgroundColor: colors.green[500],
-  },
-  force: {
-    backgroundColor: colors.purple[500],
-  },
-  "special-interests": {
-    backgroundColor: colors.pink[500],
-  },
-}))
-
-function CoupCard(props) {
-  const role = getRole(props.role)
+    "& div.MuiAvatar-colorDefault": {
+      backgroundColor: color,
+    },
+    "& .roleFg": {
+      color: color,
+    },
+  }))
+)
+function CoupCard({ roleName }) {
+  const role = getRole(roleName)
   const classes = useStyles()
-  const cardClassName = classes.card
-  const avatarClassName = classes[role.category.id]
 
   return (
-    <Card className={cardClassName}>
+    <Card className={classes[role.category.id]}>
       <CardHeader
-        avatar={
-          <Avatar className={avatarClassName}>
-            {role.category.abbreviation}
-          </Avatar>
-        }
-        title={role.name}
+        avatar={<Avatar>{role.category.abbreviation}</Avatar>}
+        title={<div className="roleFg">{role.name}</div>}
         subheader={role.category.name}
       />
-      <CardContent>{role.text}</CardContent>
+      <CardContent>
+        <p>
+          <b>{role.action}</b>: {role.text}
+        </p>
+        {role.block && (
+          <p className="roleFg">
+            Blocks {role.action}
+            {role.special && <> ({role.special})</>}
+          </p>
+        )}
+      </CardContent>
     </Card>
   )
 }
