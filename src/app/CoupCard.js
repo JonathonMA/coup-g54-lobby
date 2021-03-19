@@ -1,11 +1,17 @@
-import React from 'react'
-import { getRole } from './coup'
-import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, Card, CardHeader, CardContent, colors } from '@material-ui/core';
+import React from "react"
+import { getRole } from "./coup"
+import { makeStyles } from "@material-ui/core/styles"
+import {
+  Avatar,
+  Card,
+  CardHeader,
+  CardContent,
+  colors,
+} from "@material-ui/core"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   card: {
-    "margin-top": '5px',
+    "margin-top": "5px",
   },
   communications: {
     backgroundColor: colors.blue[500],
@@ -21,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function CoupCard (props) {
+function CoupCard(props) {
   const role = getRole(props.role)
   const classes = useStyles()
   const cardClassName = classes.card
@@ -38,9 +44,7 @@ function CoupCard (props) {
         title={role.name}
         subheader={role.category.name}
       />
-      <CardContent>
-        {role.text}
-      </CardContent>
+      <CardContent>{role.text}</CardContent>
     </Card>
   )
 }
