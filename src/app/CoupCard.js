@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) =>
     },
   }))
 )
-function CoupCard(props) {
-  const role = getRole(props.role)
+function CoupCard({ roleName }) {
+  const role = getRole(roleName)
   const classes = useStyles()
 
   return (

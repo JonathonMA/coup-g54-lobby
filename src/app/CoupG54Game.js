@@ -6,12 +6,7 @@ import CoupCard from "./CoupCard"
 
 export default function CoupG54Game() {
   const { gameSeed } = useParams()
-  const cards = generateCoupRoles(gameSeed)
-  return (
-    <>
-      {cards.map((role, key) => (
-        <CoupCard key={key} role={role} />
-      ))}
-    </>
-  )
+  const roleNames = generateCoupRoles(gameSeed)
+
+  return roleNames.map((roleName, key) => <CoupCard {...{ roleName, key }} />)
 }
