@@ -20,22 +20,34 @@ import {
   Typography,
   Paper,
   Fab,
-} from '@material-ui/core'
-import InfoIcon from '@material-ui/icons/Info'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
-import ShuffleIcon from '@material-ui/icons/Shuffle'
+} from "@material-ui/core"
+import InfoIcon from "@material-ui/icons/Info"
+import PlayArrowIcon from "@material-ui/icons/PlayArrow"
+import ShuffleIcon from "@material-ui/icons/Shuffle"
 
-import CoupG54Game from './app/CoupG54Game'
-import NewGame from './app/NewGame'
+import CoupG54Game from "./app/CoupG54Game"
+import NewGame from "./app/NewGame"
 
-function BottomNavBar(){
+function BottomNavBar() {
   const location = useLocation()
   const shortLocation = location.pathname.split("/")[1]
 
   return (
     <BottomNavigation value={shortLocation} showLabels>
-      <BottomNavigationAction value="game" label="Game" icon={<PlayArrowIcon />} component={Link} to="/game" />
-      <BottomNavigationAction value="about" label="About" icon={<InfoIcon />} component={Link} to="/about" />
+      <BottomNavigationAction
+        value="game"
+        label="Game"
+        icon={<PlayArrowIcon />}
+        component={Link}
+        to="/game"
+      />
+      <BottomNavigationAction
+        value="about"
+        label="About"
+        icon={<InfoIcon />}
+        component={Link}
+        to="/about"
+      />
       <Switch>
         <Route path="/game">
           <Fab color="primary" aria-label="new" component={Link} to="/game">
@@ -49,8 +61,10 @@ function BottomNavBar(){
 
 function GameTitle() {
   const { gameSeed } = useParams()
-  return(
-    <>Coup: Rebellion G54 <i>(game {gameSeed})</i></>
+  return (
+    <>
+      Coup: Rebellion G54 <i>(game {gameSeed})</i>
+    </>
   )
 }
 
@@ -66,9 +80,7 @@ function About() {
       <Typography variant="h6" component="h2">
         Author
       </Typography>
-      <Typography variant="body1">
-        Jonathon M. Abbott
-      </Typography>
+      <Typography variant="body1">Jonathon M. Abbott</Typography>
     </Paper>
   )
 }
@@ -86,9 +98,7 @@ export default function App() {
                   <Route path="/game/:gameSeed">
                     <GameTitle />
                   </Route>
-                  <Route path="/about">
-                    About
-                  </Route>
+                  <Route path="/about">About</Route>
                 </Switch>
               </Typography>
             </Toolbar>
