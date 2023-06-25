@@ -12,6 +12,16 @@ I got the role summaries from coriolis on boardgamegeek
 <https://boardgamegeek.com/filepage/123722/player-aid-us-letter-size>, great
 stuff.
 
+## How to use
+
+Develop locally:
+
+    $ npm run dev
+
+Deploy to github pages:
+
+    $ npm run deploy
+
 ## TODO
 
 - Holy crap 2.7M
