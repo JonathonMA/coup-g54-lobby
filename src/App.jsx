@@ -108,9 +108,7 @@ export default function App() {
             </Toolbar>
           </AppBar>
           <Switch>
-            <Route exact path="/">
-              <Redirect to="/game" />
-            </Route>
+            <Route exact path="/" render={() => <Redirect to="/game" />} />
             <Route path="/about">
               <About />
             </Route>
