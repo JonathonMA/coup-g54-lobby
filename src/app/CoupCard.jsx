@@ -1,13 +1,7 @@
 import React from "react"
 import { getRole } from "./coup"
-import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles'
-import {
-  Avatar,
-  Card,
-  CardHeader,
-  CardContent,
-  colors,
-} from "@material-ui/core"
+import { ThemeProvider, createMuiTheme, makeStyles } from "@mui/material/styles"
+import { Avatar, Card, CardHeader, CardContent, colors } from "@mui/material"
 import mapObject from "underscore/modules/mapObject"
 
 const roleColors = {

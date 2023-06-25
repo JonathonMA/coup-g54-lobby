@@ -21,10 +21,10 @@ import {
   Card,
   CardContent,
   Fab,
-} from "@material-ui/core"
-import InfoIcon from "@material-ui/icons/Info"
-import PlayArrowIcon from "@material-ui/icons/PlayArrow"
-import ShuffleIcon from "@material-ui/icons/Shuffle"
+} from "@mui/material"
+import InfoIcon from "@mui/icons-material/Info"
+import PlayArrowIcon from "@mui/icons-material/PlayArrow"
+import ShuffleIcon from "@mui/icons-material/Shuffle"
 
 import CoupG54Game from "./app/CoupG54Game"
 import NewGame from "./app/NewGame"
