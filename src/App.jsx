@@ -1,10 +1,9 @@
 import React from "react"
 import {
   HashRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link,
-  Redirect,
   useLocation,
   useParams,
 } from "react-router-dom"
@@ -40,7 +39,7 @@ function BottomNavBar() {
         label="Game"
         icon={<PlayArrowIcon />}
         component={Link}
-        to="/game"
+        to="/"
       />
       <BottomNavigationAction
         value="about"
@@ -49,13 +48,9 @@ function BottomNavBar() {
         component={Link}
         to="/about"
       />
-      <Switch>
-        <Route path="/game">
-          <Fab color="primary" aria-label="new" component={Link} to="/game">
-            <ShuffleIcon />
-          </Fab>
-        </Route>
-      </Switch>
+      <Fab color="primary" aria-label="new" component={Link} to="/">
+        <ShuffleIcon />
+      </Fab>
     </BottomNavigation>
   )
 }
@@ -98,30 +93,19 @@ export default function App() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6">
-                <Switch>
-                  <Route path="/game/:gameSeed">
-                    <GameTitle />
-                  </Route>
-                  <Route path="/about">About</Route>
-                </Switch>
+                <Routes>
+                  <Route path="/game/:gameSeed" element={<GameTitle />} />
+                  <Route path="/about" element="About" />
+                  <Route path="*" element="" />
+                </Routes>
               </Typography>
             </Toolbar>
           </AppBar>
-          <Switch>
-            <Route exact path="/" render={() => <Redirect to="/game" />} />
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route exact path="/game">
-              <NewGame />
-            </Route>
-            <Route path="/game/:gameSeed">
-              <CoupG54Game />
-            </Route>
-            <Route path="/*">
-              <NewGame />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/game/:gameSeed" element={<CoupG54Game />} />
+            <Route path="*" element={<NewGame />} />
+          </Routes>
         </Box>
       </Container>
       <BottomNavBar />

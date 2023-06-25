@@ -1,8 +1,13 @@
-import { Redirect } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
 import generateSeed from "./generate-seed"
 
 export default function NewGame() {
-  const seed = generateSeed()
+  const navigate = useNavigate()
 
-  return <Redirect to={`/game/${seed}`} />
+  useEffect(() => {
+    const seed = generateSeed()
+    navigate(`/game/${seed}`)
+  })
 }
