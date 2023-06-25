@@ -1,10 +1,9 @@
 import React from "react"
 import {
   HashRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link,
-  Redirect,
   useLocation,
   useParams,
 } from "react-router-dom"
@@ -21,13 +20,16 @@ import {
   Card,
   CardContent,
   Fab,
-} from "@material-ui/core"
-import InfoIcon from "@material-ui/icons/Info"
-import PlayArrowIcon from "@material-ui/icons/PlayArrow"
-import ShuffleIcon from "@material-ui/icons/Shuffle"
+} from "@mui/material"
+import InfoIcon from "@mui/icons-material/Info"
+import PlayArrowIcon from "@mui/icons-material/PlayArrow"
+import ShuffleIcon from "@mui/icons-material/Shuffle"
 
 import CoupG54Game from "./app/CoupG54Game"
 import NewGame from "./app/NewGame"
+
+// NOTE: Fab doesn't accept showLabel. BottomNavigation passes it down ...
+const FFab = ({ showLabel, ...props }) => <Fab {...props} />
 
 function BottomNavBar() {
   const location = useLocation()
@@ -40,7 +42,7 @@ function BottomNavBar() {
         label="Game"
         icon={<PlayArrowIcon />}
         component={Link}
-        to="/game"
+        to="/"
       />
       <BottomNavigationAction
         value="about"
@@ -49,13 +51,15 @@ function BottomNavBar() {
         component={Link}
         to="/about"
       />
-      <Switch>
-        <Route path="/game">
-          <Fab color="primary" aria-label="new" component={Link} to="/game">
-            <ShuffleIcon />
-          </Fab>
-        </Route>
-      </Switch>
+      <FFab
+        color="primary"
+        label="new"
+        aria-label="new"
+        component={Link}
+        to="/"
+      >
+        <ShuffleIcon />
+      </FFab>
     </BottomNavigation>
   )
 }
@@ -98,32 +102,19 @@ export default function App() {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6">
-                <Switch>
-                  <Route path="/game/:gameSeed">
-                    <GameTitle />
-                  </Route>
-                  <Route path="/about">About</Route>
-                </Switch>
+                <Routes>
+                  <Route path="/game/:gameSeed" element={<GameTitle />} />
+                  <Route path="/about" element="About" />
+                  <Route path="*" element="" />
+                </Routes>
               </Typography>
             </Toolbar>
           </AppBar>
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/game" />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route exact path="/game">
-              <NewGame />
-            </Route>
-            <Route path="/game/:gameSeed">
-              <CoupG54Game />
-            </Route>
-            <Route path="/*">
-              <NewGame />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/game/:gameSeed" element={<CoupG54Game />} />
+            <Route path="*" element={<NewGame />} />
+          </Routes>
         </Box>
       </Container>
       <BottomNavBar />
