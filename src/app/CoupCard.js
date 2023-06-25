@@ -19,7 +19,7 @@ const roleColors = {
 
 const allRoles = (func) => mapObject(roleColors, func)
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles(() =>
   allRoles((color) => ({
     "margin-top": "5px",
     "& div.MuiAvatar-colorDefault": {

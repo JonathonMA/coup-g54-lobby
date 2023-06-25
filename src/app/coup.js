@@ -9,7 +9,7 @@ const enhanceCategory = (category) => ({
   ...category,
 })
 
-function findOrThrow(type, array, predicate, message) {
+function findOrThrow(type, array, predicate) {
   const item = array.find(predicate)
 
   if (!item) {
