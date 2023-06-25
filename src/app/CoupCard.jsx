@@ -1,6 +1,6 @@
 import React from "react"
 import { getRole } from "./coup"
-import { makeStyles } from "@material-ui/core/styles"
+import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles'
 import {
   Avatar,
   Card,
@@ -19,7 +19,9 @@ const roleColors = {
 
 const allRoles = (func) => mapObject(roleColors, func)
 
-const useStyles = makeStyles(() =>
+const theme = createMuiTheme()
+
+const useStyles = makeStyles((theme) =>
   allRoles((color) => ({
     "margin-top": "5px",
     "& div.MuiAvatar-colorDefault": {
@@ -35,24 +37,26 @@ function CoupCard({ roleName }) {
   const classes = useStyles()
 
   return (
-    <Card className={classes[role.category.id]}>
-      <CardHeader
-        avatar={<Avatar>{role.category.abbreviation}</Avatar>}
-        title={<div className="roleFg">{role.name}</div>}
-        subheader={role.category.name}
-      />
-      <CardContent>
-        <p>
-          <b>{role.action}</b>: {role.text}
-        </p>
-        {role.block && (
-          <p className="roleFg">
-            Blocks {role.action}
-            {role.special && <> ({role.special})</>}
+    <ThemeProvider theme={theme}>
+      <Card className={classes[role.category.id]}>
+        <CardHeader
+          avatar={<Avatar>{role.category.abbreviation}</Avatar>}
+          title={<div className="roleFg">{role.name}</div>}
+          subheader={role.category.name}
+        />
+        <CardContent>
+          <p>
+            <b>{role.action}</b>: {role.text}
           </p>
-        )}
-      </CardContent>
-    </Card>
+          {role.block && (
+            <p className="roleFg">
+              Blocks {role.action}
+              {role.special && <> ({role.special})</>}
+            </p>
+          )}
+        </CardContent>
+      </Card>
+    </ThemeProvider>
   )
 }
 
