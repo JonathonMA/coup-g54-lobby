@@ -28,6 +28,9 @@ import ShuffleIcon from "@mui/icons-material/Shuffle"
 import CoupG54Game from "./app/CoupG54Game"
 import NewGame from "./app/NewGame"
 
+// NOTE: Fab doesn't accept showLabel. BottomNavigation passes it down ...
+const FFab = ({ showLabel, ...props }) => <Fab {...props} />
+
 function BottomNavBar() {
   const location = useLocation()
   const shortLocation = location.pathname.split("/")[1]
@@ -48,9 +51,15 @@ function BottomNavBar() {
         component={Link}
         to="/about"
       />
-      <Fab color="primary" aria-label="new" component={Link} to="/">
+      <FFab
+        color="primary"
+        label="new"
+        aria-label="new"
+        component={Link}
+        to="/"
+      >
         <ShuffleIcon />
-      </Fab>
+      </FFab>
     </BottomNavigation>
   )
 }
