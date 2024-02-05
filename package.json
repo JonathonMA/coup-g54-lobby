@@ -2,7 +2,7 @@
   "name": "coup-g54-lobby",
   "version": "0.1.0",
   "description": "Pregame ritual for Coup G54",
-  "homepage": "https://jonathonma.github.io/coup-g54-lobby/",
+  "homepage": "https://coupg54.dandaraga.net/",
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
